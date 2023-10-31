@@ -70,7 +70,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: fileinfo, gd
+          extensions: fileinfo, imagick
           coverage: xdebug
 
       - name: Get composer cache directory for Windows
