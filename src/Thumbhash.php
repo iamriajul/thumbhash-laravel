@@ -57,6 +57,14 @@ class Thumbhash
     }
 
     /**
+     * @return string
+     */
+    public function getDriver(): string
+    {
+        return $this->driver;
+    }
+
+    /**
      * Encode an image to thumbhash string - base64 encoded.
      *
      * @param string|resource|Image|UploadedFile $data
@@ -65,9 +73,7 @@ class Thumbhash
     public function encode(mixed $data): string
     {
         $imageManager = new ImageManager([
-            'driver' => extension_loaded($this->driver)
-                ? $this->driver
-                : ($this->driver === 'imagick' ? 'gd' : 'imagick'),
+            'driver' => $this->driver,
         ]);
 
         $data = $imageManager->make($data);

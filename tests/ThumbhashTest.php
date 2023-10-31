@@ -16,6 +16,11 @@ class ThumbhashTest extends TestCase
         $hash = new Thumbhash();
 
         $this->assertSame(
+            'imagick',
+            $hash->getDriver()
+        );
+
+        $this->assertSame(
             'm5uDBQAS1wt3iIemifd3h4CIKUd5iZBoSQ',
             $hash->encode(__DIR__ . '/images/1.png')
         );
@@ -39,6 +44,11 @@ class ThumbhashTest extends TestCase
     public function testEncodeDifferentImageWidth(): void
     {
         $hash = new Thumbhash();
+
+        $this->assertSame(
+            'imagick',
+            $hash->getDriver()
+        );
 
         $this->assertSame(
             '2quDAYAm9bZweIeXcGf+p6eXcHiTaaY',
@@ -70,6 +80,11 @@ class ThumbhashTest extends TestCase
     public function testEncodeWithGifFormat(): void
     {
         $hash = new Thumbhash();
+
+        $this->assertSame(
+            'imagick',
+            $hash->getDriver()
+        );
 
         $this->assertSame(
             'KccFVYjQSZcVZ3lwdVnGi3VwSQiG',

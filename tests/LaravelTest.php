@@ -37,6 +37,11 @@ class LaravelTest extends TestCase
         $hash = 'fCgGDwTnqHiHd4l/hJaHmHmHhoEHGHgA';
 
         $this->assertSame(
+            'imagick',
+            Thumbhash::getDriver()
+        );
+
+        $this->assertSame(
             $hash,
             Thumbhash::encode(__DIR__ . '/images/5.png'),
         );
