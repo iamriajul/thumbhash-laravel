@@ -5,6 +5,7 @@ namespace Riajul\Thumbhash\Tests;
 use Riajul\Thumbhash\Facades\Thumbhash;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase;
+use Riajul\Thumbhash\ThumbhashServiceProvider;
 
 class LaravelTest extends TestCase
 {
@@ -16,7 +17,7 @@ class LaravelTest extends TestCase
      */
     protected function getPackageProviders($app): array
     {
-        return ['Riajul\Thumbhash\ThumbhashServiceProvider'];
+        return [ThumbhashServiceProvider::class];
     }
 
     /**
@@ -28,7 +29,7 @@ class LaravelTest extends TestCase
     protected function getPackageAliases($app): array
     {
         return [
-            'Thumbhash' => 'Thumbhash\Thumbhash\Facades\Thumbhash',
+            'Thumbhash' => Thumbhash::class,
         ];
     }
 
