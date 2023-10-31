@@ -5,9 +5,10 @@ namespace Riajul\Thumbhash;
 use Intervention\Image\Constraint;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
-use Intervention\Image\Imagick\Driver as ImagickDriver;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Thumbhash\Thumbhash as ThumbhashLib;
+use function Thumbhash\extract_size_and_pixels_with_gd;
+use function Thumbhash\extract_size_and_pixels_with_imagick;
 
 class Thumbhash
 {
@@ -88,27 +89,15 @@ class Thumbhash
             $data = $data->resize($newWidth, $newHeight, function (Constraint $constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
-            });
+            })->encode();
+        } else {
+            $data = $data->encode();
         }
 
-        $width = $data->width();
-        $height = $data->height();
-
-        // The pixels in the input image, row-by-row. Must have w*h*4 elements.
-        $rgba = [];
-
-        if ($data->getDriver() instanceof ImagickDriver) {
-            /**
-             * @var \Imagick $imagickImage
-             */
-            $imagickImage = $data->getCore();
-            $rgba = $imagickImage->exportImagePixels(0, 0, $width, $height, 'RGBA', \Imagick::PIXEL_CHAR);
+        if ($this->driver === 'imagick') {
+            [$width, $height, $rgba] = extract_size_and_pixels_with_imagick($data->getEncoded());
         } else {
-            /**
-             * @var \GdImage $gdImage
-             */
-            $gdImage = $data->getCore();
-            $rgba = $this->gdImageToPixelsArray($gdImage);
+            [$width, $height, $rgba] = extract_size_and_pixels_with_gd($data->getEncoded());
         }
 
         $data->destroy();
@@ -116,40 +105,5 @@ class Thumbhash
         $hashBinary = ThumbhashLib::RGBAToHash($width, $height, $rgba);
 
         return ThumbhashLib::convertHashToString($hashBinary);
-    }
-
-    private function gdImageToPixelsArray(\GdImage $gdImage): array
-    {
-        // Get the width and height of the image
-        $width = imagesx($gdImage);
-        $height = imagesy($gdImage);
-
-        // Create a new image resource to store the RGBA values
-        $rgbaImage = imagecreatetruecolor($width, $height);
-
-        // Initialize an array to store the RGBA pixel values
-        $rgba = [];
-
-        // Loop through the image to extract the RGBA values
-        for ($y = 0; $y < $height; $y++) {
-            for ($x = 0; $x < $width; $x++) {
-                $color = imagecolorat($gdImage, $x, $y);
-                $red = ($color >> 16) & 0xFF;
-                $green = ($color >> 8) & 0xFF;
-                $blue = $color & 0xFF;
-                $alpha = 127 - (($color >> 24) & 0xFF) / 2; // Adjust alpha for GD
-
-                $rgba[] = $red;
-                $rgba[] = $green;
-                $rgba[] = $blue;
-                $rgba[] = $alpha;
-
-                // Set the RGBA values to the new image resource
-                $rgbaColor = imagecolorallocatealpha($rgbaImage, $red, $green, $blue, $alpha);
-                imagesetpixel($rgbaImage, $x, $y, $rgbaColor);
-            }
-        }
-
-        return $rgba;
     }
 }

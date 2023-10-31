@@ -34,7 +34,7 @@ class LaravelTest extends TestCase
 
     public function testPackageLoaded(): void
     {
-        $hash = 'fCgGDwTnqHiHd4l/hJaHmHmHhoEHGHgA';
+        $hash = '1QcSHQRnh493V4dIh4eXh1h4kJUI';
 
         $this->assertSame(
             'imagick',
@@ -43,7 +43,7 @@ class LaravelTest extends TestCase
 
         $this->assertSame(
             $hash,
-            Thumbhash::encode(__DIR__ . '/images/5.png'),
+            Thumbhash::encode(__DIR__ . '/assets/sunrise.jpg'),
         );
     }
 }
