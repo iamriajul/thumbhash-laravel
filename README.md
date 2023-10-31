@@ -55,7 +55,6 @@ app('thumbhash')
 ```
 
 ### TODO:
-- [x] Support encoding to thumbhash base64 string.
 - [ ] Support decoding from thumbhash base64 string.
 - [ ] Support encoding to thumbhash binary array.
 - [ ] Support decoding from thumbhash binary array.
