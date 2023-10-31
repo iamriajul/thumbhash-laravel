@@ -1,9 +1,9 @@
 # Thumbhash
 
-[![Testing](https://github.com/bepsvpt/blurhash/actions/workflows/testing.yml/badge.svg)](https://github.com/bepsvpt/blurhash/actions/workflows/testing.yml)
-[![Latest Stable Version](https://poser.pugx.org/bepsvpt/blurhash/v/stable)](https://packagist.org/packages/bepsvpt/blurhash)
-[![Total Downloads](https://poser.pugx.org/bepsvpt/blurhash/downloads)](https://packagist.org/packages/bepsvpt/blurhash)
-[![License](https://poser.pugx.org/bepsvpt/blurhash/license)](https://packagist.org/packages/bepsvpt/blurhash)
+[![Testing](https://github.com/iamriajul/thumbhash-laravel/actions/workflows/testing.yml/badge.svg)](https://github.com/iamriajul/thumbhash-laravel/actions/workflows/testing.yml)
+[![Latest Stable Version](https://poser.pugx.org/iamriajul/thumbhash-laravel/v/stable)](https://packagist.org/packages/iamriajul/thumbhash-laravel)
+[![Total Downloads](https://poser.pugx.org/iamriajul/thumbhash-laravel/downloads)](https://packagist.org/packages/iamriajul/thumbhash-laravel)
+[![License](https://poser.pugx.org/iamriajul/thumbhash-laravel/license)](https://packagist.org/packages/iamriajul/thumbhash-laravel)
 
 A PHP implementation of [Thumbhash](https://github.com/evanw/thumbhash) with Laravel integration.
 
