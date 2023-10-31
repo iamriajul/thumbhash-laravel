@@ -2,9 +2,9 @@
 
 namespace Riajul\Thumbhash\Tests;
 
-use Riajul\Thumbhash\Facades\Thumbhash;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase;
+use Riajul\Thumbhash\Facades\Thumbhash;
 use Riajul\Thumbhash\ThumbhashServiceProvider;
 
 class LaravelTest extends TestCase

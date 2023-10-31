@@ -15,7 +15,6 @@ return [
 
     'driver' => 'imagick',
 
-
     /*
      * Resize image max width or height.
      *

@@ -7,12 +7,14 @@ use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Thumbhash\Thumbhash as ThumbhashLib;
+
 use function Thumbhash\extract_size_and_pixels_with_gd;
 use function Thumbhash\extract_size_and_pixels_with_imagick;
 
 class Thumbhash
 {
     protected string $driver;
+
     protected int $imageMaxSize;
 
     /**
@@ -43,7 +45,8 @@ class Thumbhash
     /**
      * Set driver.
      */
-    public function setDriver(string $driver): self {
+    public function setDriver(string $driver): self
+    {
         if (!in_array($driver, ['imagick', 'gd'])) {
             throw new \InvalidArgumentException('Driver must be imagick or gd.');
         }
@@ -57,9 +60,6 @@ class Thumbhash
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getDriver(): string
     {
         return $this->driver;
@@ -68,7 +68,8 @@ class Thumbhash
     /**
      * Encode an image to thumbhash string - base64 encoded.
      *
-     * @param string|resource|Image|UploadedFile $data
+     * @param  string|resource|Image|UploadedFile  $data
+     *
      * @throws \ImagickException
      */
     public function encode(mixed $data): string
@@ -82,7 +83,7 @@ class Thumbhash
         // Resize the image to lower resolution. max 100x100.
         $originalWidth = $data->width();
         $originalHeight = $data->height();
-        if ($originalWidth >  $this->imageMaxSize || $originalHeight > $this->imageMaxSize) {
+        if ($originalWidth > $this->imageMaxSize || $originalHeight > $this->imageMaxSize) {
             $scale = $this->imageMaxSize / max($originalWidth, $originalHeight);
             $newWidth = $originalWidth * $scale;
             $newHeight = $originalHeight * $scale;
