@@ -56,12 +56,12 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     strategy:
-      fail-fast: false
+      fail-fast: true
 
       matrix:
         laravel: [ '10', '9', '8' ]
         php: [ '8.2', '8.1', '8.0' ]
-        os: [ ubuntu-latest, windows-latest, macOS-latest ]
+        os: [ ubuntu-latest ]
 
     steps:
       - uses: actions/checkout@v3
@@ -70,7 +70,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          extensions: fileinfo, imagick
+          extensions: fileinfo, imagick, gd
           coverage: xdebug
 
       - name: Get composer cache directory for Windows

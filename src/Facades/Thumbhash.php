@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * @method static string encode(mixed|string|UploadedFile|Image $data)
+ * @method static void setDriver(string $driver)
+ * @method static string getDriver()
+ * @method static void setResizedImageMaxSize(int $imageMaxSize)
  */
 class Thumbhash extends Facade
 {

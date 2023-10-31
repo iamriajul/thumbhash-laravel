@@ -46,5 +46,19 @@ class LaravelTest extends TestCase
             $hash,
             Thumbhash::encode(__DIR__ . '/assets/sunrise.jpg'),
         );
+
+        // Test GD
+
+        Thumbhash::setDriver('gd');
+
+        $this->assertSame(
+            'gd',
+            Thumbhash::getDriver()
+        );
+
+        $this->assertSame(
+            $hash,
+            Thumbhash::encode(__DIR__ . '/assets/sunrise.jpg'),
+        );
     }
 }
