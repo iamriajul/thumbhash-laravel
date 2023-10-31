@@ -28,8 +28,8 @@
     "phpunit/phpunit": "^9.6 || ^10.0"
   },
   "suggest": {
-    "ext-gd": "Only when using GD driver. (Not recommended)",
-    "ext-imagick": "Required to use Intervention Image. (Recommended)"
+    "ext-gd": "GD or Imagick is required.",
+    "ext-imagick": "GD or Imagick is required."
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
