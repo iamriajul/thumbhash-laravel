@@ -1,24 +1,26 @@
 {
-  "name": "bepsvpt/blurhash",
-  "description": "A PHP implementation of BlurHash with Laravel integration.",
+  "name": "iamriajul/thumbhash-laravel",
+  "description": "A PHP implementation of Thumbhash with Laravel integration.",
   "license": "MIT",
   "type": "library",
   "keywords": [
-    "blurhash",
+    "thumbhash",
     "laravel"
   ],
   "authors": [
     {
-      "name": "bepsvpt",
-      "email": "og7lsrszah6y3lz@infinitefa.email"
+      "name": "iamriajul",
+      "email": "kmriajulislami@gmail.com"
     }
   ],
-  "homepage": "https://github.com/bepsvpt/blurhash",
+  "homepage": "https://github.com/iamriajul/thumbhash-laravel",
   "require": {
     "php": "^8.0",
+    "ext-imagick": "*",
     "ext-gd": "*",
     "illuminate/support": "^8.0 || ^9.0 || ^10.0",
-    "intervention/image": "^2.7"
+    "intervention/image": "^2.7",
+    "srwiez/thumbhash": "^1.2"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.30",
@@ -31,12 +33,12 @@
   "prefer-stable": true,
   "autoload": {
     "psr-4": {
-      "Bepsvpt\\Blurhash\\": "src/"
+      "Riajul\\Thumbhash\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Bepsvpt\\Blurhash\\Tests\\": "tests/"
+      "Riajul\\Thumbhash\\Tests\\": "tests/"
     }
   },
   "config": {
@@ -50,10 +52,10 @@
   "extra": {
     "laravel": {
       "aliases": {
-        "BlurHash": "Bepsvpt\\Blurhash\\Facades\\BlurHash"
+        "Thumbhash": "Riajul\\Thumbhash\\Facades\\Thumbhash"
       },
       "providers": [
-        "Bepsvpt\\Blurhash\\BlurHashServiceProvider"
+        "Riajul\\Thumbhash\\ThumbhashServiceProvider"
       ]
     }
   }

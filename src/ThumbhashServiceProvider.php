@@ -1,11 +1,11 @@
 <?php
 
-namespace Bepsvpt\Blurhash;
+namespace Riajul\Thumbhash;
 
 use Illuminate\Support\ServiceProvider;
 use Laravel\Lumen\Application;
 
-class BlurHashServiceProvider extends ServiceProvider
+class ThumbhashServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application events.
@@ -26,7 +26,7 @@ class BlurHashServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                $this->configPath() => config_path('blurhash.php'),
+                $this->configPath() => config_path('thumbhash.php'),
             ], 'config');
         }
     }
@@ -36,7 +36,7 @@ class BlurHashServiceProvider extends ServiceProvider
      */
     protected function bootLumen(): void
     {
-        $this->app->configure('blurhash');
+        $this->app->configure('thumbhash');
     }
 
     /**
@@ -44,15 +44,13 @@ class BlurHashServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom($this->configPath(), 'blurhash');
+        $this->mergeConfigFrom($this->configPath(), 'thumbhash');
 
-        $this->app->singleton('blurhash', function ($app) {
-            $config = $app['config']->get('blurhash');
+        $this->app->singleton('thumbhash', function ($app) {
+            $config = $app['config']->get('thumbhash');
 
-            return new BlurHash(
-                $config['components-x'],
-                $config['components-y'],
-                $config['resized-image-max-width']
+            return new Thumbhash(
+                $config['resized-image-max-size']
             );
         });
     }
@@ -62,6 +60,6 @@ class BlurHashServiceProvider extends ServiceProvider
      */
     protected function configPath(): string
     {
-        return __DIR__ . '/../config/blurhash.php';
+        return __DIR__ . '/../config/thumbhash.php';
     }
 }

@@ -1,10 +1,9 @@
 <?php
 
-namespace Bepsvpt\Blurhash\Tests;
+namespace Riajul\Thumbhash\Tests;
 
-use Bepsvpt\Blurhash\Facades\BlurHash;
+use Riajul\Thumbhash\Facades\Thumbhash;
 use Illuminate\Foundation\Application;
-use Intervention\Image\Image;
 use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
@@ -17,7 +16,7 @@ class LaravelTest extends TestCase
      */
     protected function getPackageProviders($app): array
     {
-        return ['Bepsvpt\Blurhash\BlurHashServiceProvider'];
+        return ['Riajul\Thumbhash\ThumbhashServiceProvider'];
     }
 
     /**
@@ -29,22 +28,17 @@ class LaravelTest extends TestCase
     protected function getPackageAliases($app): array
     {
         return [
-            'BlurHash' => 'Bepsvpt\Blurhash\Facades\BlurHash',
+            'Thumbhash' => 'Thumbhash\Thumbhash\Facades\Thumbhash',
         ];
     }
 
     public function testPackageLoaded(): void
     {
-        $hash = 'LITR[|$*hK%g%2j[e.jZhef6d=g3';
+        $hash = 'fCgGDwTnqHeHd4l/hJaHmHmHhoEHGHgA';
 
         $this->assertSame(
             $hash,
-            BlurHash::encode(__DIR__ . '/images/5.png'),
-        );
-
-        $this->assertInstanceOf(
-            Image::class,
-            BlurHash::decode($hash, 32, 32),
+            Thumbhash::encode(__DIR__ . '/images/5.png'),
         );
     }
 }
