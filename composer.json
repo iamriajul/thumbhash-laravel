@@ -22,7 +22,7 @@
   },
   "suggest": {
     "ext-imagick": "Required to use Intervention Image. (Recommended)",
-    "ext-gd": "Required to use Intervention Image."
+    "ext-gd": "Only when using GD driver. (Not recommended)"
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.30",
