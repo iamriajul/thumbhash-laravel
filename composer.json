@@ -16,11 +16,13 @@
   "homepage": "https://github.com/iamriajul/thumbhash-laravel",
   "require": {
     "php": "^8.0",
-    "ext-imagick": "*",
-    "ext-gd": "*",
     "illuminate/support": "^8.0 || ^9.0 || ^10.0",
     "intervention/image": "^2.7",
     "srwiez/thumbhash": "^1.2"
+  },
+  "suggest": {
+    "ext-imagick": "Required to use Intervention Image. (Recommended)",
+    "ext-gd": "Required to use Intervention Image."
   },
   "require-dev": {
     "ergebnis/composer-normalize": "^2.30",

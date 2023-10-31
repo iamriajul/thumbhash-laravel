@@ -34,7 +34,7 @@ class LaravelTest extends TestCase
 
     public function testPackageLoaded(): void
     {
-        $hash = 'fCgGDwTnqHeHd4l/hJaHmHmHhoEHGHgA';
+        $hash = 'fCgGDwTnqHiHd4l/hJaHmHmHhoEHGHgA';
 
         $this->assertSame(
             $hash,

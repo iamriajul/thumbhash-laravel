@@ -8,7 +8,7 @@
   testdox="true"
 >
   <testsuites>
-    <testsuite name="BlurHash Test">
+    <testsuite name="Thumbhash Test">
       <directory>./tests</directory>
     </testsuite>
   </testsuites>

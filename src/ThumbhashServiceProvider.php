@@ -50,7 +50,8 @@ class ThumbhashServiceProvider extends ServiceProvider
             $config = $app['config']->get('thumbhash');
 
             return new Thumbhash(
-                $config['resized-image-max-size']
+                $config['driver'],
+                $config['resized-image-max-size'],
             );
         });
     }
