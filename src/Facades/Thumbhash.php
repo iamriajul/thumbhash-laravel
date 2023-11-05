@@ -11,6 +11,8 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @method static void setDriver(string $driver)
  * @method static string getDriver()
  * @method static void setResizedImageMaxSize(int $imageMaxSize)
+ *
+ * @see \Riajul\Thumbhash\Thumbhash
  */
 class Thumbhash extends Facade
 {
