@@ -4,6 +4,7 @@ namespace Riajul\Thumbhash;
 
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Thumbhash\Thumbhash as ThumbhashLib;
 
@@ -67,15 +68,19 @@ class Thumbhash
     /**
      * Encode an image to thumbhash string - base64 encoded.
      *
-     * @param  string|resource|Image|UploadedFile  $data
+     * @param  string|resource|Image|UploadedFile|File  $input
      *
      * @throws \ImagickException
      */
-    public function encode(mixed $data): string
+    public function encode(mixed $input): string
     {
+        if (is_string($input) && is_file($input)) {
+            $input = new File($input);
+        }
+
         $imageManager = $this->driver == 'gd' ? ImageManager::gd() : ImageManager::imagick();
 
-        $data = $imageManager->read($data);
+        $data = $imageManager->read($input);
 
         // Resize the image to lower resolution. max 100x100.
         $originalWidth = $data->width();
@@ -84,15 +89,17 @@ class Thumbhash
             $scale = $this->imageMaxSize / max($originalWidth, $originalHeight);
             $newWidth = $originalWidth * $scale;
             $newHeight = $originalHeight * $scale;
-            $data = $data->scaleDown($newWidth, $newHeight)->encode();
+            $data = $data->scaleDown($newWidth, $newHeight)->encode()->toString();
+        } else if ($input instanceof File) {
+            $data = $input->getContent();
         } else {
-            $data = $data->encode();
+            $data = $data->encode()->toString();
         }
 
         if ($this->driver === 'imagick') {
-            [$width, $height, $rgba] = extract_size_and_pixels_with_imagick($data->toString());
+            [$width, $height, $rgba] = extract_size_and_pixels_with_imagick($data);
         } else {
-            [$width, $height, $rgba] = extract_size_and_pixels_with_gd($data->toString());
+            [$width, $height, $rgba] = extract_size_and_pixels_with_gd($data);
         }
 
         unset($data);

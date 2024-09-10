@@ -20,7 +20,7 @@ class ThumbhashTest extends TestCase
             ],
             [
                 'url' => 'assets/field.jpg',
-                'hash' => '3OcRJYB4d3h/iIeHeEh3eIhw6j7A',
+                'hash' => '3OcRJYB4d3h/iIeHeEh3eIhw+j3A',
             ],
             [
                 'url' => 'assets/fall.jpg',
@@ -28,11 +28,11 @@ class ThumbhashTest extends TestCase
             ],
             [
                 'url' => 'assets/street.jpg',
-                'hash' => 'VggKDYAW6lZvdYd6d2iZh/p4CE/j',
+                'hash' => 'VggKDYAW6lZvdYd6d2iZh/p4GE/k',
             ],
             [
                 'url' => 'assets/mountain.jpg',
-                'hash' => '2fcZFIB3iId/h3iJh4aJUJ2V8g',
+                'hash' => '2fcZFIB3iId/h3iJh4aIYJ2V8g',
             ],
             [
                 'url' => 'assets/coast.jpg',
@@ -90,7 +90,7 @@ class ThumbhashTest extends TestCase
             ],
             [
                 'url' => 'assets/mountain.jpg',
-                'hash' => '2fcZFIB3iId/h3iJh4aIYJ2W8g',
+                'hash' => '2fcZFIB3iId/h3iJh4aIYJ2V8g',
             ],
             [
                 'url' => 'assets/coast.jpg',
