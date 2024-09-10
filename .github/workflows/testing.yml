@@ -1,6 +1,7 @@
 name: Testing
 
 on:
+  workflow_dispatch: # allow manual run
   push:
   pull_request:
   schedule:
