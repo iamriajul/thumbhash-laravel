@@ -90,7 +90,7 @@ class Thumbhash
             $newWidth = $originalWidth * $scale;
             $newHeight = $originalHeight * $scale;
             $data = $data->scaleDown($newWidth, $newHeight)->encode()->toString();
-        } else if ($input instanceof File) {
+        } elseif ($input instanceof File) {
             $data = $input->getContent();
         } else {
             $data = $data->encode()->toString();
