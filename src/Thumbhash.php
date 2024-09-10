@@ -74,11 +74,9 @@ class Thumbhash
      */
     public function encode(mixed $data): string
     {
-        $imageManager = new ImageManager([
-            'driver' => $this->driver,
-        ]);
+        $imageManager = $this->driver == 'gd' ? ImageManager::gd() : ImageManager::imagick();
 
-        $data = $imageManager->make($data);
+        $data = $imageManager->read($data);
 
         // Resize the image to lower resolution. max 100x100.
         $originalWidth = $data->width();
@@ -87,21 +85,18 @@ class Thumbhash
             $scale = $this->imageMaxSize / max($originalWidth, $originalHeight);
             $newWidth = $originalWidth * $scale;
             $newHeight = $originalHeight * $scale;
-            $data = $data->resize($newWidth, $newHeight, function (Constraint $constraint) {
-                $constraint->aspectRatio();
-                $constraint->upsize();
-            })->encode();
+            $data = $data->scaleDown($newWidth, $newHeight)->encode();
         } else {
             $data = $data->encode();
         }
 
         if ($this->driver === 'imagick') {
-            [$width, $height, $rgba] = extract_size_and_pixels_with_imagick($data->getEncoded());
+            [$width, $height, $rgba] = extract_size_and_pixels_with_imagick($data->toString());
         } else {
-            [$width, $height, $rgba] = extract_size_and_pixels_with_gd($data->getEncoded());
+            [$width, $height, $rgba] = extract_size_and_pixels_with_gd($data->toString());
         }
 
-        $data->destroy();
+        unset($data);
 
         $hashBinary = ThumbhashLib::RGBAToHash($width, $height, $rgba);
 
