@@ -2,7 +2,6 @@
 
 namespace Riajul\Thumbhash;
 
-use Intervention\Image\Constraint;
 use Intervention\Image\Image;
 use Intervention\Image\ImageManager;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
