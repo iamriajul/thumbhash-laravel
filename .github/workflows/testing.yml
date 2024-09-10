@@ -61,7 +61,7 @@ jobs:
 
       matrix:
         laravel: [ '11', '10', '9', '8' ]
-        php: [ '8.3' '8.2', '8.1', '8.0' ]
+        php: [ '8.3', '8.2', '8.1', '8.0' ]
         os: [ ubuntu-latest ]
 
     steps:
