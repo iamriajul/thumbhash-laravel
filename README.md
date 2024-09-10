@@ -17,7 +17,7 @@ Thumbhash is a compact representation of a placeholder for an image.
 
 ## Supported Laravel Version
 
-8.0 ~ 11.x
+9.0 ~ 11.x
 
 ## Installation
 
