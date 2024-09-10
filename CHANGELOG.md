@@ -4,6 +4,7 @@
 
 - 1.0.1 (2024-09-10)
   - Upgrade Intervention Image to ^3.0
+  - Removed PHP 8.0 support
 
 - 1.0.0 (2023-10-31)
   - Initial release
