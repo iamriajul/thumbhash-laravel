@@ -33,7 +33,7 @@ class LaravelTest extends TestCase
         ];
     }
 
-    public function testPackageLoaded(): void
+    public function test_package_loaded(): void
     {
         $hash = '1QcSHQRnh493V4dIh4eXh1h4kJUI';
 

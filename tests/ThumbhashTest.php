@@ -7,7 +7,7 @@ use Riajul\Thumbhash\Thumbhash;
 
 class ThumbhashTest extends TestCase
 {
-    public function testEncodeImagick(): void
+    public function test_encode_imagick(): void
     {
         $data = [
             [
@@ -65,7 +65,7 @@ class ThumbhashTest extends TestCase
         }
     }
 
-    public function testEncodeGd(): void
+    public function test_encode_gd(): void
     {
         $data = [
             [
