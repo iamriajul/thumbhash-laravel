@@ -60,5 +60,8 @@
         "Riajul\\Thumbhash\\ThumbhashServiceProvider"
       ]
     }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
   }
 }
