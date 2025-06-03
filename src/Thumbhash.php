@@ -87,8 +87,8 @@ class Thumbhash
         $originalHeight = $data->height();
         if ($originalWidth > $this->imageMaxSize || $originalHeight > $this->imageMaxSize) {
             $scale = $this->imageMaxSize / max($originalWidth, $originalHeight);
-            $newWidth = $originalWidth * $scale;
-            $newHeight = $originalHeight * $scale;
+            $newWidth = (int) ($originalWidth * $scale);
+            $newHeight = (int) ($originalHeight * $scale);
             $data = $data->scaleDown($newWidth, $newHeight)->encode()->toString();
         } elseif ($input instanceof File) {
             $data = $input->getContent();
